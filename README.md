@@ -1,36 +1,34 @@
+# Portfolio de Joaqúin Antonio Galdame
+## Técnico Universitario en Programación
+## Desarrollador Web Full Stack
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+<h1 align="center">Hi 👋, I'm <a href="https://www.linkedin.com/in/joaqu%C3%ADn-galdame-375897130/" target="blank">
+Joa Galdame</a></h1>
+<h3 align="center">A Full Stack Web Developer and University Technician in Programming &#127470;&#127475</h3>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<a target="_blank" align="center">
+  <img align="right" top="500" height="300" width="400" alt="GIF" src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdHI4MTU5czV0bDN2bjJqeXVrMGFrdWJsc3pnZ3NuZ3Q1N3VrazBkMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/78XCFBGOlS6keY1Bil/giphy.gif">
+</a>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>
+  <ul>
+    <li>🔭 I’m currently work as a freelancer in Full Stack Web Developer.</li>
+    <li>🌱 I’m currently learning in my Bachelor's Degree in Computer Science</li>
+    <li>👯 I’m looking to collaborate on Freelance or other proyects</li>
+    <li>💬 Ask me about any thing what you need! </li>
+    <li>📫 How to reach me:
+        <ul>
+          <li>Email joakingaldame@gmail.com</li>
+          <li>LinkedInt <a href="https://www.linkedin.com/in/joaqu%C3%ADn-galdame-375897130/" target="blank">Joaquin Galdame</a></li>
+        </ul>
+    </li>
+    <li>💪 Strong Skill: Angular</li>
+    <li>⚡ Fun fact: I really love games!:</li>
+  </ul>
+</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## <img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif?cid=ecf05e47a0n3gi1bfqntqmob8g9aid1oyj2wr3ds3mg700bl&rid=giphy.gif" width ="25"><b> Skills</b>
+<br>
