@@ -37,26 +37,6 @@ export default function Home() {
       });
     };
 
-
-    animate(['feTurbulence', 'feDisplacementMap'], {
-      baseFrequency: .05,
-      scale: 15,
-      alternate: true,
-      loop: true
-    });
-    animate('polygon', {
-      points: '64 68.64 8.574 100 63.446 67.68 64 4 64.554 67.68 119.426 100',
-      alternate: true,
-      loop: true
-    });
-    animate(svg.createDrawable('.line'), {
-      draw: ['0 0', '0 1', '1 1'],
-      ease: 'inOutQuad',
-      duration: 2000,
-      delay: stagger(100),
-      loop: true
-    });
-
     // 👇 observer para las demás secciones
     const observer = new IntersectionObserver(
       (entries) => {
@@ -69,7 +49,7 @@ export default function Home() {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: window.innerWidth < 768 ? 0.05 : 0.2 }
     );
 
     [headerRef.current, hero.current,aboutme.current, projects.current, contact.current, footer.current].forEach((el) => {
@@ -84,7 +64,7 @@ export default function Home() {
     <div className="font-sans bg-custom-dark text-custom-light w-full scroll-container">
       {/* HEADER */}
       <header  ref={headerRef} data-dir="left"  className={`bg-custom-secondary fixed top-0 left-0 w-full flex items-center justify-between px-10 py-4 shadow-lg z-50`} style={{ opacity: 0, transform: 'translateX(-200px)' }}>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center text-center gap-4 justify-center w-full sm:w-1/3 sm:justify-start">
           <span className={`${styles.shinyText} text-2xl font-bold text-shadow-md`}>Joaquin Galdame</span>
         </div>
         <nav className="hidden md:flex gap-8 text-lg font-bold ">
@@ -97,16 +77,17 @@ export default function Home() {
       {/* HERO */}
       <section ref={hero} data-dir="right" className={`min-h-screen flex-col justify-center items-center text-center px-6 pt-10 large centered grid square-grid array-container`} style={{ opacity: 0, transform: 'translateX(-200px)' }}>
         <div className="flex flex-col items-center">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 flex flex-col items-center">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 flex flex-col items-center">
             <div className="titulo flex flex-row">
-              ¡Hola! Soy <span className="text-custom-accent ml-2">Joaquin</span>
+              <span className="text-custom-accent">Joaquin</span>
+              <span className="text-custom-accent ml-3">Galdame</span>
             </div>
           </h1>
           <p className={`text-lg md:text-2xl font-noto-sans font-semibold max-w-2xl mb-1 `}>
             Desarrollador Web Full Stack <br/>
             Técnico Universitario en Programación
           </p>
-          <p className="text-lg md:text-xl max-w-2xl mb-8">
+          <p className="text-lg text-custom-light md:text-xl max-w-2xl mb-8">
             Dedicación y compromiso con pasión por crear experiencias digitales modernas, 
             rápidas y con impacto.
           </p>
@@ -144,8 +125,8 @@ export default function Home() {
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-bold mb-2">Terminal Punto de Venta Web (TPV Web)</h3>
-              <p className="text-sm text-custom-light mb-4 text-justify">
+              <h3 className="text-xl sm:text-2xl font-bold mb-2 text-center sm:text-left">Terminal Punto de Venta Web (TPV Web)</h3>
+              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Terminal Punto de Venta Web (TPV Web) es un sistema web integral para la gestión comercial que permite el procesamiento de pagos, facturación electrónica, gestión y control de inventario, gestión contable y financiera, generación de reportes comerciales, entre otras funcionalidades.
               </p>
               <a href="#" className="text-custom-accent hover:underline cursor-pointer">
@@ -164,8 +145,8 @@ export default function Home() {
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2">Pedidos Internos</h3>
-              <p className="text-sm text-custom-light mb-4">
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">Pedidos Internos</h3>
+              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema E-commerce Multi-empresa, diseñado para clientes destacados de la ciudad de San Juan, como Resi y Portho. El sistema funcionaba como un tótem interactivo, permitiendo a los clientes seleccionar productos, integración de pasarela de pagos, generación de ticket de compra y administración de pedidos internos por parte de vendedores. Elistema contaba con interfaces gráficas en función del usuario y cliente, como también para un rol de administrador.
               </p>
               <a href="#" className="text-custom-accent hover:underline">
@@ -184,8 +165,8 @@ export default function Home() {
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2">SmartTireControl</h3>
-              <p className="text-sm text-custom-light mb-4">
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
+              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
               </p>
               <a href="#" className="text-custom-accent hover:underline">
@@ -204,8 +185,8 @@ export default function Home() {
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2">SmartTireControl</h3>
-              <p className="text-sm text-custom-light mb-4">
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
+              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
               </p>
               <a href="#" className="text-custom-accent hover:underline">
@@ -225,8 +206,8 @@ export default function Home() {
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2">SmartTireControl</h3>
-              <p className="text-sm text-custom-light mb-4">
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
+              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
               </p>
               <a href="#" className="text-custom-accent hover:underline">
@@ -245,8 +226,8 @@ export default function Home() {
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2">SmartTireControl</h3>
-              <p className="text-sm text-custom-light mb-4">
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
+              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
               </p>
               <a href="#" className="text-custom-accent hover:underline">
@@ -258,21 +239,12 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section ref={aboutme} data-dir="right"  id="about" className="min-h-screen py-20 px-6 md:px-20 text-center md:text-left" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
-        <div className="flex flex-row items-center">
+      <section ref={aboutme} data-dir="right"  id="about" className="min-h-screen py-20 px-6 md:px-20 text-center md:text-left sm:text-center" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
+        <div className="flex flex-row items-center justify-center md:justify-start lg:justify-start w-full">
           <h2 className="text-4xl font-bold mb-8">Sobre mí</h2>
-          <div className="large centered row">
-            <svg width="40" height="40" viewBox="0 0 128 128">
-              <filter id="displacementFilter">
-                <feTurbulence type="turbulence" numOctaves="2" baseFrequency="0" result="turbulence"/>
-                <feDisplacementMap in2="turbulence" in="SourceGraphic" scale="1" xChannelSelector="R" yChannelSelector="G"/>
-              </filter>
-              <polygon points="64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96"  fill="currentColor"/>
-            </svg>
-          </div>
         </div>
         <div>
-          <p className="text-xl text-custom-light mt-4">
+          <p className="text-xl text-custom-light mt-4 text-center lg:text-justify md:text-justify">
             Desarrollador Web Full Stack Freelance y Técnico Universitario en Programación.&nbsp;Cuento con un dominio sólido de los fundamentos del desarrollo web y la programación, orientado hacia la entrega de software de alta calidad y la satisfacción de los requisitos funcionales de cada proyecto.
           </p>
           <button className={`${styles.buttonAboutMe} ${styles.effectWave} px-6 py-4 cursor-pointer rounded-md mt-8`}>Conocerme más</button>
@@ -280,9 +252,9 @@ export default function Home() {
 
         <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-[80vw] lg:grid-cols-3">
           <div className={`${styles.gradientBorderLeft} rounded-3xl rounded-t-3xl z-10 p-8 bg-gradient-to-br from-custom-dark to-custom-primary sm:mx-8 sm:rounded-b-sm sm:p-10 lg:mx-0 lg:rounded-tr-sm lg:rounded-bl-3xl hover:rounded-3xl  ${styles.cardHoverLeft}`}>
-            <div className="bg-custom-secondary p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-6">
+            <div className="bg-custom-secondary lg:p-3 md:p-3 sm:p-0 rounded-lg w-12 h-12 flex items-center justify-center mb-6">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-custom-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
               </svg>
             </div>
             <h3 id="tier-hobby" className="text-3xl font-semibold text-custom-light text-shadow-md">Desarrollador Web Full Stack</h3>
@@ -293,25 +265,25 @@ export default function Home() {
             <ul role="list" className="mt-8 space-y-3 text-sm/6 text-custom-light sm:mt-10">
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 + 10 projects
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Database Management and API integration
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Advanced analytics
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Deploys and server administration
               </li>
@@ -323,7 +295,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-custom-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 14l9-5-9-5-9 5 9 5z" />
                   <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
               </svg>
             </div>
             <h3 id="tier-technician" className="text-3xl font-semibold text-custom-light text-shadow-md">Técnico Universitario en Programación</h3>
@@ -334,37 +306,37 @@ export default function Home() {
             <ul role="list" className="mt-8 space-y-3 text-sm/6 text-custom-light sm:mt-10">
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Languages Paradigm
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Data Structure
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Databases
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Python - C - C#
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Networks
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Structure and operation of computers
               </li>
@@ -376,7 +348,7 @@ export default function Home() {
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-custom-light" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path d="M12 14l9-5-9-5-9 5 9 5z" />
                   <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
               </svg>
             </div>
             <h3 id="tier-hobby" className="text-3xl font-semibold text-custom-light">Licenciatura en Ciencias de la Computación</h3>
@@ -387,25 +359,25 @@ export default function Home() {
             <ul role="list" className="mt-8 space-y-3 text-sm/6 text-custom-light sm:mt-10">
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Software engineering
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Information theory and Cryptography
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 IA
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
-                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Requirements Engineering
               </li>
