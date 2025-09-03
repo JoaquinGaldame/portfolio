@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export", 
   webpack(config) {
     // Primero buscá la regla que maneja imágenes de Next
     const fileLoaderRule = config.module.rules.find((rule: any) =>
