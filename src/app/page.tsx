@@ -140,6 +140,7 @@ export default function Home() {
                 src={tpvwebicon}
                 alt="tpvweb-image"
                 className={`${styles.img} object-cover h-72 w-full  `}
+                unoptimized
               />
             </div>
             <div className="mx-4 py-2">
@@ -159,6 +160,7 @@ export default function Home() {
                 src={pedidosinternos}
                 alt="pedidosinternos-image"
                 className={`${styles.img} object-cover h-72 w-full`}
+                unoptimized
               />
             </div>
             <div className="mx-4 py-2">
@@ -178,6 +180,7 @@ export default function Home() {
                 src={smartire}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
+                unoptimized
               />
             </div>
             <div className="mx-4 py-2">
@@ -197,6 +200,7 @@ export default function Home() {
                 src={smartire}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
+                unoptimized
               />
             </div>
             <div className="mx-4 py-2">
@@ -217,6 +221,7 @@ export default function Home() {
                 src={smartire}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
+                unoptimized
               />
             </div>
             <div className="mx-4 py-2">
@@ -236,6 +241,7 @@ export default function Home() {
                 src={smartire}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
+                unoptimized
               />
             </div>
             <div className="mx-4 py-2">
