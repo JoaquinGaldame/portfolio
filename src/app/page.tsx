@@ -4,6 +4,11 @@ import logo from "../asset/logos/logoJG.svg";
 import tpvwebicon from "../../public/projects/tpvweb/TPV-prototipo7.png"
 import smartire from "../../public/projects/smartirecontrol/Example-1.png"
 import pedidosinternos from "../../public/projects/pedidosinternos/carro-1.png"
+import managementMonitoring from "../../public/projects/managment-monitoring/Foto-Prototipo-2.png"
+import solucioneserp from "../../public/projects/solucioneserp/solucionesERP-1.png"
+import coolsoft from "../../public/projects/coolsoft-migration/menu-1.png"
+import Icon from "./ui/icon";
+import { siJavascript, siPython, siAngular, siDotnet, siReact, siBootstrap, siTailwindcss, siCss, siVuedotjs, siPostgresql, siMysql, siNpm, siNodedotjs, siPm2, siTypescript, siRedux, siGit, siJsonwebtokens, siDrizzle, siGraphql, siReactquery, siUbuntu, siAlmalinux, siLinuxserver, siLinux, siBitbucket } from "simple-icons/icons";
 import styles from './ui/home.module.css'
 import { useEffect, useRef, useState } from "react";
 import { animate, createDraggable, createScope, createSpring, eases, onScroll, stagger, svg, utils, waapi} from "animejs";
@@ -73,7 +78,6 @@ export default function Home() {
           <a href="#contact" className="hover:text-[var(--primary)] transition">Contacto</a>
         </nav>
       </header>
-
       {/* HERO */}
       <section ref={hero} data-dir="right" className={`min-h-screen flex-col justify-center items-center text-center px-6 pt-10 large centered grid square-grid array-container`} style={{ opacity: 0, transform: 'translateX(-200px)' }}>
         <div className="flex flex-col items-center">
@@ -108,6 +112,33 @@ export default function Home() {
             </a>
           </div>
         </div>
+        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-6 mt-10 lg:w-[60vw]">
+          {/* Con color oficial */}
+          <Icon icon={siJavascript} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siPython} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siAngular} color="#DD0031" className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siDotnet} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siReact} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siReactquery} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siTypescript} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siTailwindcss} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siCss} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siBootstrap} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siPm2} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siNodedotjs} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siPostgresql} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siMysql} className="hover:scale-110 transition-transform opacity-45"/>
+          <Icon icon={siNpm} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siVuedotjs} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siDrizzle} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siRedux} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siGit} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siJsonwebtokens} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siGraphql} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siLinux} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siLinuxserver} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+          <Icon icon={siUbuntu} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
+        </div>
       </section>
       
       {/* PROJECTS */}
@@ -129,7 +160,7 @@ export default function Home() {
               <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Terminal Punto de Venta Web (TPV Web) es un sistema web integral para la gestión comercial que permite el procesamiento de pagos, facturación electrónica, gestión y control de inventario, gestión contable y financiera, generación de reportes comerciales, entre otras funcionalidades.
               </p>
-              <a href="#" className="text-custom-accent hover:underline cursor-pointer">
+              <a href="#" className="hidden text-custom-accent hover:underline cursor-pointer">
                 Ver más →
               </a>
             </div>
@@ -149,7 +180,7 @@ export default function Home() {
               <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema E-commerce Multi-empresa, diseñado para clientes destacados de la ciudad de San Juan, como Resi y Portho. El sistema funcionaba como un tótem interactivo, permitiendo a los clientes seleccionar productos, integración de pasarela de pagos, generación de ticket de compra y administración de pedidos internos por parte de vendedores. Elistema contaba con interfaces gráficas en función del usuario y cliente, como también para un rol de administrador.
               </p>
-              <a href="#" className="text-custom-accent hover:underline">
+              <a href="#" className="hidden text-custom-accent hover:underline">
                 Ver más →
               </a>
             </div>
@@ -169,7 +200,7 @@ export default function Home() {
               <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
               </p>
-              <a href="#" className="text-custom-accent hover:underline">
+              <a href="#" className="hidden text-custom-accent hover:underline">
                 Ver más →
               </a>
             </div>
@@ -178,18 +209,24 @@ export default function Home() {
           <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
             <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
               <Image
-                src={smartire}
+                src={managementMonitoring}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
                 unoptimized
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
-              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">Monitoreo de Proyectos</h3>
+              <p className="text-sm text-custom-light mb-1 text-center lg:text-justify md:text-justify">
+                Desarrollo de un proyecto front-end de un sistema integral desde cero, diseñado para centralizar y analizar la información crítica de proyectos, contratos y productos.&nbsp;La plataforma, conectada a un Data Collector móvil, proporcionaba una capa de visualización e inteligencia con las siguientes capacidades:  
               </p>
-              <a href="#" className="text-custom-accent hover:underline">
+              {/* <ul>
+                <li>Dashboard General: Panel de control central con métricas en tiempo real para una toma de decisiones ágil.</li>
+                <li>Visualización de Datos: Herramientas interactivas y gráficos dinámicos para el análisis profundo de información.</li>
+                <li>Generación de Reportes: Sistema de reportes de carga dinámica y personalizable, generados al instante.</li>
+                <li>Maestro de Datos: Módulo completo para la administración (CRUD) de registros maestros y datos fundamentales. Como trampas, áreas.</li>
+              </ul> */}
+              <a href="#" className="hidden text-custom-accent hover:underline">
                 Ver más →
               </a>
             </div>
@@ -199,18 +236,18 @@ export default function Home() {
           <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
             <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
               <Image
-                src={smartire}
+                src={solucioneserp}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
                 unoptimized
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">Soluciones ERP</h3>
               <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
                 Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
               </p>
-              <a href="#" className="text-custom-accent hover:underline">
+              <a href="#" className="hidden text-custom-accent hover:underline">
                 Ver más →
               </a>
             </div>
@@ -219,18 +256,19 @@ export default function Home() {
           <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
             <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
               <Image
-                src={smartire}
+                src={coolsoft}
                 alt="smartire-image"
                 className={`${styles.img} object-cover h-72 w-full`}
                 unoptimized
               />
             </div>
             <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
+              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">CoolSoft Sistema de Gestión</h3>
               <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
+                Sistema Web para la gestión de negocios para una empresa de la ciudad de San Juan. Se trata de una migración de una aplicación web realizada en PHP. La idea principal es migrar todo el sistema con Frontend Vue3.js y Backend con Nest.js.
+                Actualmente en desarrollo módulos de Gestión y Control de Inventario para Electronica BIOS, trabajando con tecnologías como Angular 20 + PrimeNG + MySQL + Laravel PHP. 
               </p>
-              <a href="#" className="text-custom-accent hover:underline">
+              <a href="#" className=" hidden text-custom-accent hover:underline">
                 Ver más →
               </a>
             </div>
@@ -244,10 +282,15 @@ export default function Home() {
           <h2 className="text-4xl font-bold mb-8">Sobre mí</h2>
         </div>
         <div>
+          <p className="flex text-2xl w-auto">Soy Desarrollador Web Full Stack Freelance y Técnico Universitario en Programación.</p>
+        </div>
+        <div>
           <p className="text-xl text-custom-light mt-4 text-center lg:text-justify md:text-justify">
-            Desarrollador Web Full Stack Freelance y Técnico Universitario en Programación.&nbsp;Cuento con un dominio sólido de los fundamentos del desarrollo web y la programación, orientado hacia la entrega de software de alta calidad y la satisfacción de los requisitos funcionales de cada proyecto.
+             Tengo un dominio sólido de los fundamentos del desarrollo web y la programación, con foco en entregar software de alta calidad que cumpla con los requisitos de cada proyecto. Me caracterizan el compromiso, la dedicación y la proactividad, cualidades que considero esenciales para alcanzar resultados profesionales.
           </p>
-          <button className={`${styles.buttonAboutMe} ${styles.effectWave} px-6 py-4 cursor-pointer rounded-md mt-8`}>Conocerme más</button>
+          <p className="text-xl text-custom-light mt-4 text-center lg:text-justify md:text-justify">
+            Mi creencia es que el verdadero corazón de la agilidad está en la capacidad de adaptarse a los cambios, filosofía que aplico en cada desafío.
+          </p>
         </div>
 
         <div className="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-6 sm:mt-20 sm:gap-y-0 lg:max-w-[80vw] lg:grid-cols-3">
@@ -383,6 +426,9 @@ export default function Home() {
               </li>
             </ul>
           </div>
+        </div>
+        <div>
+          <button className={`${styles.buttonAboutMe} ${styles.effectWave} px-6 py-4 cursor-pointer rounded-md mt-8`}>Conocerme más</button>
         </div>
       </section>
 
