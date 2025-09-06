@@ -7,7 +7,7 @@ import pedidosinternos from "../../public/projects/pedidosinternos/carro-1.png"
 import managementMonitoring from "../../public/projects/managment-monitoring/Foto-Prototipo-2.png"
 import solucioneserp from "../../public/projects/solucioneserp/solucionesERP-1.png"
 import coolsoft from "../../public/projects/coolsoft-migration/menu-1.png"
-import Icon from "./ui/icon";
+import Icon from "./components/icon";
 import { siJavascript, siPython, siAngular, siDotnet, siReact, siBootstrap, siTailwindcss, siCss, siVuedotjs, siPostgresql, siMysql, siNpm, siNodedotjs, siPm2, siTypescript, siRedux, siGit, siJsonwebtokens, siDrizzle, siGraphql, siReactquery, siUbuntu, siAlmalinux, siLinuxserver, siLinux, siBitbucket } from "simple-icons/icons";
 import styles from './ui/home.module.css'
 import { useEffect, useRef, useState } from "react";
