@@ -193,6 +193,38 @@
 }
 
 /*********************************** 
+  Animacion para boton de NEXT/BACK projects 
+************************************/
+
+.buttonNextBack {
+  background: 
+        var(--dark)
+        radial-gradient(
+          circle,
+          transparent 1%,
+          var(--light) 1%)
+          center/15000%;
+  color: var(--light);
+}
+
+.effectWaveProjects {
+  background-position: center;
+  transition:  background 0.8s;
+}
+
+.effectWaveProjects:hover {
+  background-color: var(--secondary);
+}
+
+.effectWaveProjects:active {
+  background-color: transparent;
+  background-size: 100%;
+  transition:  background 0s;
+}
+
+
+
+/*********************************** 
   Animacion para boton de About Me 
 ************************************/
 

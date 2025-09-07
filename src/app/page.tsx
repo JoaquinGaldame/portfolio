@@ -8,11 +8,16 @@ import managementMonitoring from "../../public/projects/managment-monitoring/Fot
 import solucioneserp from "../../public/projects/solucioneserp/solucionesERP-1.png"
 import coolsoft from "../../public/projects/coolsoft-migration/menu-1.png"
 import Icon from "../components/icon";
-import { siJavascript, siPython, siAngular, siDotnet, siReact, siBootstrap, siTailwindcss, siCss, siVuedotjs, siPostgresql, siMysql, siNpm, siNodedotjs, siPm2, siTypescript, siRedux, siGit, siJsonwebtokens, siDrizzle, siGraphql, siReactquery, siUbuntu, siAlmalinux, siLinuxserver, siLinux, siBitbucket } from "simple-icons/icons";
+import { siGithub, siInstagram, siWhatsapp } from "simple-icons/icons";
+import linkedin from "../../public/linkedin-icon.svg"
 import styles from './ui/home.module.css'
 import { useEffect, useRef, useState } from "react";
 import { animate, createDraggable, createScope, createSpring, eases, onScroll, stagger, svg, utils, waapi} from "animejs";
-import { cards } from "./data/dataAboutMe";
+import { motion, Variants } from "framer-motion";
+import { container, variantsLeft, variantsRight } from "pages/components/skills";
+import ProjectCard from "pages/components/projects/project";
+import Skills from "pages/components/skills";
+import { DATA_PROJECTS } from "pages/components/projects/data";
 
 export default function Home() {
   const headerRef = useRef(null);
@@ -21,7 +26,12 @@ export default function Home() {
   const projects = useRef(null);
   const contact = useRef(null);
   const footer = useRef(null);
+  const [page, setPage] = useState(0);
+  const projectsPerPage = 3;
 
+  const start = page * projectsPerPage;
+  const end = start + projectsPerPage;
+  const currentProjects = DATA_PROJECTS.slice(start, end);
 
   useEffect(() => {
     if ( !hero.current || 
@@ -112,168 +122,40 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-6 mt-10 lg:w-[60vw]">
-          {/* Con color oficial */}
-          <Icon icon={siJavascript} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siPython} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siAngular} color="#DD0031" className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siDotnet} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siReact} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siReactquery} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siTypescript} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siTailwindcss} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siCss} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siBootstrap} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siPm2} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siNodedotjs} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siPostgresql} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siMysql} className="hover:scale-110 transition-transform opacity-45"/>
-          <Icon icon={siNpm} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siVuedotjs} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siDrizzle} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siRedux} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siGit} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siJsonwebtokens} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siGraphql} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siLinux} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siLinuxserver} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-          <Icon icon={siUbuntu} className="hover:scale-110 transition-transform opacity-45 hidden md:block"/>
-        </div>
       </section>
       
       {/* PROJECTS */}
-      <section ref={projects} data-dir="left"  id="projects" className="min-h-screen py-20 px-6 md:px-20 bg-custom-secondary text-custom-light rounded-md" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
-        <h2 className="text-4xl font-bold text-center mb-12">Trabajos</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Ejemplo de Card de Proyecto */}
-          <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
-            <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
-              <Image
-                src={tpvwebicon}
-                alt="tpvweb-image"
-                className={`${styles.img} object-cover h-72 w-full  `}
-                unoptimized
-              />
-            </div>
-            <div className="mx-4 py-2">
-              <h3 className="text-xl sm:text-2xl font-bold mb-2 text-center sm:text-left">Terminal Punto de Venta Web (TPV Web)</h3>
-              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Terminal Punto de Venta Web (TPV Web) es un sistema web integral para la gestión comercial que permite el procesamiento de pagos, facturación electrónica, gestión y control de inventario, gestión contable y financiera, generación de reportes comerciales, entre otras funcionalidades.
-              </p>
-              <a href="#" className="hidden text-custom-accent hover:underline cursor-pointer">
-                Ver más →
-              </a>
-            </div>
+      <section    id="projects" className="min-h-screen py-20 px-6 md:px-20 bg-custom-secondary text-custom-light rounded-md" >
+        <div ref={projects} data-dir="left" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
+          <h2 className="text-4xl font-bold text-center mb-12 text-white tracking-wide">Trabajos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {currentProjects.map((project) => (
+              <ProjectCard key={project.id} id={project.id} />
+             ))}
           </div>
-
-          <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
-            <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
-              <Image
-                src={pedidosinternos}
-                alt="pedidosinternos-image"
-                className={`${styles.img} object-cover h-72 w-full`}
-                unoptimized
-              />
-            </div>
-            <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">Pedidos Internos</h3>
-              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Sistema E-commerce Multi-empresa, diseñado para clientes destacados de la ciudad de San Juan, como Resi y Portho. El sistema funcionaba como un tótem interactivo, permitiendo a los clientes seleccionar productos, integración de pasarela de pagos, generación de ticket de compra y administración de pedidos internos por parte de vendedores. Elistema contaba con interfaces gráficas en función del usuario y cliente, como también para un rol de administrador.
-              </p>
-              <a href="#" className="hidden text-custom-accent hover:underline">
-                Ver más →
-              </a>
-            </div>
+          <div className="flex justify-center mt-10">
+            {page === 0 ? (
+              <button
+                onClick={() => setPage(1)}
+                className={`px-6 py-2 ${styles.buttonNextBack} ${styles.effectWaveProjects} cursor-pointer border-2 border-transparent rounded-full hover:bg-[var(--accent)] hover:border-2 hover:border-[var(--light)]`}
+              >
+                Mostrar más
+              </button>
+            ) : (
+              <button
+                onClick={() => setPage(0)}
+                className={`px-6 py-2 ${styles.buttonNextBack} ${styles.effectWaveProjects} cursor-pointer border-2 border-transparent rounded-full hover:bg-[var(--accent)] hover:border-2 hover:border-[var(--light)]`}
+              >
+                Volver
+              </button>
+            )}
           </div>
-
-          <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
-            <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
-              <Image
-                src={smartire}
-                alt="smartire-image"
-                className={`${styles.img} object-cover h-72 w-full`}
-                unoptimized
-              />
-            </div>
-            <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">SmartTireControl</h3>
-              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
-              </p>
-              <a href="#" className="hidden text-custom-accent hover:underline">
-                Ver más →
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
-            <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
-              <Image
-                src={managementMonitoring}
-                alt="smartire-image"
-                className={`${styles.img} object-cover h-72 w-full`}
-                unoptimized
-              />
-            </div>
-            <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">Monitoreo de Proyectos</h3>
-              <p className="text-sm text-custom-light mb-1 text-center lg:text-justify md:text-justify">
-                Desarrollo de un proyecto front-end de un sistema integral desde cero, diseñado para centralizar y analizar la información crítica de proyectos, contratos y productos.&nbsp;La plataforma, conectada a un Data Collector móvil, proporcionaba una capa de visualización e inteligencia con las siguientes capacidades:  
-              </p>
-              {/* <ul>
-                <li>Dashboard General: Panel de control central con métricas en tiempo real para una toma de decisiones ágil.</li>
-                <li>Visualización de Datos: Herramientas interactivas y gráficos dinámicos para el análisis profundo de información.</li>
-                <li>Generación de Reportes: Sistema de reportes de carga dinámica y personalizable, generados al instante.</li>
-                <li>Maestro de Datos: Módulo completo para la administración (CRUD) de registros maestros y datos fundamentales. Como trampas, áreas.</li>
-              </ul> */}
-              <a href="#" className="hidden text-custom-accent hover:underline">
-                Ver más →
-              </a>
-            </div>
-          </div>
-
-
-          <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
-            <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
-              <Image
-                src={solucioneserp}
-                alt="smartire-image"
-                className={`${styles.img} object-cover h-72 w-full`}
-                unoptimized
-              />
-            </div>
-            <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">Soluciones ERP</h3>
-              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Sistema de Gestión y Control de Neumáticos OTR (Off-The-Road) Aplicación web desarrollada para la gestión integral y monitoreo del ciclo de vida de neumáticos utilizados en equipos de minería, transporte y servicio pesado. El sistema permite optimizar la trazabilidad, mantenimiento y análisis de desempeño de cada neumático, contribuyendo directamente a la reducción de costos operativos y la mejora de la eficiencia en terreno. 
-              </p>
-              <a href="#" className="hidden text-custom-accent hover:underline">
-                Ver más →
-              </a>
-            </div>
-          </div>
-
-          <div className="bg-custom-dark rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition hover:shadow-2xl">
-            <div className="rounded-lg overflow-hidden bg-custom-dark mx-4">
-              <Image
-                src={coolsoft}
-                alt="smartire-image"
-                className={`${styles.img} object-cover h-72 w-full`}
-                unoptimized
-              />
-            </div>
-            <div className="mx-4 py-2">
-              <h3 className="text-2xl font-semibold mb-2 text-center sm:text-left">CoolSoft Sistema de Gestión</h3>
-              <p className="text-sm text-custom-light mb-4 text-center lg:text-justify md:text-justify">
-                Sistema Web para la gestión de negocios para una empresa de la ciudad de San Juan. Se trata de una migración de una aplicación web realizada en PHP. La idea principal es migrar todo el sistema con Frontend Vue3.js y Backend con Nest.js.
-                Actualmente en desarrollo módulos de Gestión y Control de Inventario para Electronica BIOS, trabajando con tecnologías como Angular 20 + PrimeNG + MySQL + Laravel PHP. 
-              </p>
-              <a href="#" className=" hidden text-custom-accent hover:underline">
-                Ver más →
-              </a>
-            </div>
+          <div className="mt-50 justify-center flex items-center flex-col">
+            <span className="text-4xl font-bold text-center mb-12 text-white tracking-wide">Skills</span>
+            <Skills />
           </div>
         </div>
+          {/* <button className={`${styles.buttonAboutMe} ${styles.effectWave} px-6 py-4 cursor-pointer rounded-md mt-8`}>Conocerme más</button> */}
       </section>
 
       {/* ABOUT */}
@@ -316,13 +198,19 @@ export default function Home() {
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
                   <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
-                Database Management and API integration
+                Database Management
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
                   <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
                 Advanced analytics
+              </li>
+              <li className="flex gap-x-3">
+                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
+                </svg>
+                API integration
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
@@ -410,7 +298,13 @@ export default function Home() {
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
                   <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
                 </svg>
-                Information theory and Cryptography
+                Cryptography 
+              </li>
+              <li className="flex gap-x-3">
+                <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
+                  <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clipRule="evenodd" fillRule="evenodd" />
+                </svg>
+                Information theory 
               </li>
               <li className="flex gap-x-3">
                 <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" className="h-5 w-5 flex-none text-custom-secondary mt-0.5">
@@ -427,37 +321,84 @@ export default function Home() {
             </ul>
           </div>
         </div>
-        <div>
-          <button className={`${styles.buttonAboutMe} ${styles.effectWave} px-6 py-4 cursor-pointer rounded-md mt-8`}>Conocerme más</button>
-        </div>
       </section>
 
 
 
       {/* CONTACT */}
-      <section ref={contact} data-dir="left" id="contact" className="py-20 px-6 md:px-20 text-center min-h-[50vh]" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
-        <h2 className="text-4xl font-bold mb-8">Contacto</h2>
-        <p className="mb-6">
-          ¿Querés charlar sobre un proyecto o colaborar?  
-          Escribime y te respondo lo antes posible.
-        </p>
-        <div className={styles.wrapper}>
-          <a
-            href="mailto:joaquin@example.com"
-            className={`${styles.aButtonContact} px-6 py-3 rounded-xl font-semibold transition`}
-          >
-            <span className={`${styles.aButtonspan2}`}></span>
-            <span className={`${styles.aButtonspan2}`}></span>
-            <span className={`${styles.aButtonspan2}`}></span>
-            <span className={`${styles.aButtonspan2}`}></span>
-            Escribime
-          </a>
+      <section ref={contact} data-dir="left" id="contact" className="py-20 px-6 md:px-20 text-center min-h-[50vh] flex flex-col justify-between" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
+        <div>
+          <h2 className="text-4xl font-bold mb-8">Contacto</h2>
+          <p className="mb-6">
+            ¿Querés charlar sobre un proyecto o colaborar?  
+            Escribime y te respondo lo antes posible.
+          </p>
+          <div className={styles.wrapper}>
+            <a
+              href="mailto:joakingaldame@gmail.com"
+              className={`${styles.aButtonContact} px-6 py-3 rounded-xl font-semibold transition`}
+            >
+              <span className={`${styles.aButtonspan2}`}></span>
+              <span className={`${styles.aButtonspan2}`}></span>
+              <span className={`${styles.aButtonspan2}`}></span>
+              <span className={`${styles.aButtonspan2}`}></span>
+              Escribime
+            </a>
+          </div>
         </div>
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+            className="w-full h-full flex flex-row items-end justify-center"
+          >
+            {/* <button className={`${styles.buttonAboutMe} ${styles.effectWave} px-6 py-4 cursor-pointer rounded-md mt-8`}>Conocerme más</button> */}
+            <motion.a
+              variants={variantsLeft}
+              href="https://github.com/JoaquinGaldame"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-4 cursor-pointer rounded-md flex items-center justify-center"
+            >
+              <Icon icon={siGithub} color="#D4D4D4" className="hover:scale-110 transition-transform" />
+            </motion.a>
+
+            <motion.a
+              variants={variantsRight}
+              href="https://www.instagram.com/joagaldame/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-4 cursor-pointer rounded-md flex items-center justify-center"
+            >
+              <Icon icon={siInstagram} color="#D4D4D4" className="hover:scale-110 transition-transform" />
+            </motion.a>
+
+            <motion.a
+              variants={variantsLeft}
+              href="https://wa.me/5492645480404"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-4 cursor-pointer rounded-md flex items-center justify-center"
+            >
+              <Icon icon={siWhatsapp} color="#D4D4D4" className="hover:scale-110 transition-transform" />
+            </motion.a>
+
+            <motion.a
+              variants={variantsRight}
+              href="https://www.linkedin.com/in/joaquin-galdame"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-4 cursor-pointer rounded-md flex items-center justify-center"
+            >
+              <Image src={linkedin} alt="Linkedin" width={40} height={40} className="hover:scale-110 transition-transform" />
+            </motion.a>
+          </motion.div>
       </section>
 
       {/* FOOTER */}
       <footer ref={footer} data-dir="right" className="bg-custom-secondary text-center py-6 text-sm" style={{ opacity: 0, transform: 'translateX(-200px)' }}>
-        © {new Date().getFullYear()} Joaquin Galdame — Todos los derechos reservados
+        © {new Date().getFullYear()} - Joaquin Galdame
       </footer>
     </div>
   );

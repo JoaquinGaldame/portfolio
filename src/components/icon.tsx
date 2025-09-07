@@ -19,7 +19,7 @@ export default function Icon({ icon, size = 40, color, className }: IconProps) {
       viewBox="0 0 24 24"
       width={size}
       height={size}
-      fill={color ? color : `#${icon.hex}`} // 👈 usa color custom si existe
+      fill={color ? color : `#${icon.hex}`}
       className={`${className}`}
     >
       <title>{icon.title}</title>
