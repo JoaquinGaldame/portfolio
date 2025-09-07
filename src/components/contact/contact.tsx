@@ -2,7 +2,7 @@ import styles from "../../app/ui/home.module.css";
 import { forwardRef } from 'react';
 import { container, variantsLeft, variantsRight } from "../skills";
 import { motion } from "framer-motion";
-import { siGithub, siInstagram, siWhatsapp } from "simple-icons/icons";
+import { siGithub, siInstagram, siWhatsapp  } from "simple-icons/icons";
 import Icon from "../icon";
 import linkedin from "../../../public/linkedin-icon.svg";
 import Image from "next/image";
@@ -74,7 +74,7 @@ const Contact = forwardRef<HTMLElement>((props, ref) => {
               rel="noopener noreferrer"
               className="px-6 py-4 cursor-pointer rounded-md flex items-center justify-center"
             >
-              <Image src={linkedin} alt="Linkedin" width={40} height={40} className="hover:scale-110 transition-transform" />
+              <Image  src="/linkedin-icon.svg"  alt="Linkedin" width={40} height={40} className="hover:scale-110 transition-transform" />
             </motion.a>
           </motion.div>
       </section>
