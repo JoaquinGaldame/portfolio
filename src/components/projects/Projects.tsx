@@ -38,7 +38,7 @@ const Projects = forwardRef<HTMLDivElement>((props, ref) => {
             </button>
           )}
         </div>
-        <div className="mt-56 justify-center flex items-center flex-col">
+        <div className="mt-16 justify-center flex items-center flex-col">
           <span className="text-4xl font-bold text-center mb-12 text-white tracking-wide">Skills</span>
           <Skills />
         </div>
